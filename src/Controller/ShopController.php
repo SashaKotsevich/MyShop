@@ -16,6 +16,7 @@ class ShopController extends AbstractController
         $user= $this->getUser();
         return $this->render('shop/homepage.html.twig', [
             'user_name' => $user->getUsername(),
+            'user_email'=> $user->getEmail(),
         ]);
     }
 }
