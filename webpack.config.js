@@ -17,7 +17,7 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if you JavaScript imports CSS.
      */
-    .addEntry('app', './assets/js/app.js')
+
     .addEntry('js/app', [
         './assets/js/app.js',
         './node_modules/bootstrap/dist/js/bootstrap.min.js'
@@ -26,12 +26,18 @@ Encore
         './assets/css/app.css',
         './node_modules/bootstrap/dist/css/bootstrap.min.css'
     ])
+    .addEntry('js/allProducts', [
+        './assets/js/allProducts.js',
+    ])
+    .addStyleEntry('css/allProducts', [
+        './assets/css/allProducts.css',
+    ])
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 
     // will require an extra script tag for runtime.js
     // but, you probably want this, unless you're building a single-page app
-    .enableSingleRuntimeChunk()
+
 
     /*
      * FEATURE CONFIG

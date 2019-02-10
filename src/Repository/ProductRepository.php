@@ -39,6 +39,21 @@ class ProductRepository extends ServiceEntityRepository
             ;
     }
 
+    public function findPage($page){
+        return $this->createQueryBuilder('Product')
+            ->orderBy('Product.name','ASC')
+            ->setFirstResult(60 * ($page - 1))
+            ->setMaxResults(60)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function productsCount()
+    {
+        return count($this->findAll());
+    }
+
     // /**
     //  * @return Product[] Returns an array of Product objects
     //  */

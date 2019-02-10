@@ -26,14 +26,14 @@ class AppFixtures extends Fixture
 
     public function loadProducts(ObjectManager $manager)
     {
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 900; $i++) {
             $product = new Product();
             $product->setName($this->faker->text(50));
             $product->setDescription($this->faker->text(800));
             $product->setDate($this->faker->dateTime);
             $product->setCount($this->faker->numberBetween(1,30));
             $product->setPrice($this->faker->numberBetween(10,300));
-            $product->setImage((($i%2)>0)?"images/image1.png":"images/image2.png");
+            $product->setImage((($i%2)>0)?"/images/image1.png":"/images/image2.png");
             $manager->persist($product);
         }
 

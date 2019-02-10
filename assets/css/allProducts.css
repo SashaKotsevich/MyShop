@@ -1,0 +1,26 @@
+
+.productsBlock{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.product{
+    width: 23%;
+    margin: 0.5%;
+    min-width: 240px;
+    border:none;
+
+}
+.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+.card-title{
+
+    text-align: center;
+}
+.pagination-item{
+    width: 50px;
+}

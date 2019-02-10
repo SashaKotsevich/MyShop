@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ShopController!{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/css/allProducts.css') }}">
+
+
+{% endblock %}
+{% block body %}
+
+
+    <nav>
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" href="{{ path('app_products', {'page': page-1}) }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            {% for item in pages %}
+                <li class="{{ item.class }}"><a class="page-link"
+                                                href="{{ path('app_products', {'page': item.id}) }}">{{ item.id }}</a>
+                </li>
+            {% endfor %}
+
+            <li class="page-item">
+                <a class="page-link" href="{{ path('app_products', {'page': page+1}) }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <article class="productsBlock" id="0">
+        {% for product in products %}
+
+            {#<div class="product" id="{{ product.id }}">#}
+            <div class="card product" id="{{ product.id }}">
+                <img src="{{ product.image }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+
+                    <a href="{{ path('app_product_show', {'id': product.id}) }}" class="btn btn-primary">Add to cart</a>
+                </div>
+
+            </div>
+
+        {% endfor %}
+    </article>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('build/js/allProducts.js') }}"></script>
+{% endblock %}
+
