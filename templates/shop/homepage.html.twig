@@ -5,4 +5,12 @@
 {% block body %}
     <p>Hi {{ user_name }}</p>
     <p>your email:{{ user_email }}</p>
+
+    <br><br>
+    {% for product in products %}
+        <div>
+            <p>{{ product.name }}</p>
+            <p>{{ product.count}}</p>
+        </div>
+    {% endfor %}
 {% endblock %}
