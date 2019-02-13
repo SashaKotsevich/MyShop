@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -20,7 +21,7 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=180, unique=true)
+     * @ORM\Column(type="string", length=180, unique=true, nullable=false)
      */
     private $username;
 
@@ -31,14 +32,20 @@ class User implements UserInterface
 
     /**
      * @var string The hashed password
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=false)
      */
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=180, unique=true)
+     * @ORM\Column(type="string", length=180, unique=true, nullable=false)
      */
     private $email;
+
+    /**
+     * @ORM\Column(type="string")
+     * @Assert\File(mimeTypes={"application/png"})
+     */
+    private $image;
 
         public function getId(): ?int
     {
@@ -104,14 +111,23 @@ class User implements UserInterface
         return $this->email;
     }
 
-    /**
-     * @param mixed $email
-     */
-    public function setEmail($email): void
+
+    public function setEmail(string $email): self
     {
         $this->email = $email;
     }
 
+
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+
+    public function setImage($image): self
+    {
+        $this->image = $image;
+    }
 
     /**
      * @see UserInterface

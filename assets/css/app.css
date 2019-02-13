@@ -1,16 +1,15 @@
-.main-container{
-    background: radial-gradient(at top, #FEFFFF, #A7CECC);
-    min-height: 100vh;
-}
-.nav-container, .body-container{
+.nav-main-container{
+
     display: flex;
-    justify-content:center;
-}
-.body-container{
 
 }
-.main-nav, .main-body{
-    width: 100%;
-    max-width:170vh ;
+.navigation-panel{
+    height: 10%;
+    margin: 10% 10px;
 }
+.logo{
+    width: 10%;
+    height: 10%;
+}
+
 

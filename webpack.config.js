@@ -32,6 +32,9 @@ Encore
     .addStyleEntry('css/allProducts', [
         './assets/css/allProducts.css',
     ])
+    .addStyleEntry('css/profile', [
+        './assets/css/profile.css',
+    ])
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 

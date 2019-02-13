@@ -17,7 +17,7 @@ class ShopController extends AbstractController
     }
 
     /**
-     * @Route("/user/products/{page<\d+>?1}", name="app_products")
+     * @Route("/products/{page<\d+>?1}", name="app_products")
      */
     public function products($page)
     {
@@ -46,7 +46,7 @@ class ShopController extends AbstractController
     }
 
     /**
-     * @Route("/user/product/{id}",name="app_product_show")
+     * @Route("/product/{id}",name="app_product_show")
      */
     public function productShow(Product $product)
     {
