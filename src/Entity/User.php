@@ -115,6 +115,7 @@ class User implements UserInterface
     public function setEmail(string $email): self
     {
         $this->email = $email;
+        return $this;
     }
 
 
@@ -124,9 +125,10 @@ class User implements UserInterface
     }
 
 
-    public function setImage($image): self
+    public function setImage(string $image="/images/profile-alt.png"): self
     {
         $this->image = $image;
+        return $this;
     }
 
     /**
