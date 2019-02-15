@@ -1,15 +1,10 @@
-.nav-main-container{
-
-    display: flex;
-
-}
-.navigation-panel{
-    height: 10%;
-    margin: 10% 10px;
+.nav-container{
+    background-color: lightgray;
+    margin: 2vw;
+    padding: 1vw;
 }
 .logo{
-    width: 10%;
-    height: 10%;
-}
+    width: 10vw;
 
+}
 
