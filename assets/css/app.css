@@ -1,10 +1,14 @@
 .nav-container{
-    background-color: lightgray;
+    background-color: white;
     margin: 2vw;
     padding: 1vw;
+    display: flex;
 }
 .logo{
     width: 10vw;
 
+}
+.body{
+    background-color: #E3E3E3;
 }
 
