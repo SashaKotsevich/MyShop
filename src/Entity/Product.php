@@ -27,6 +27,14 @@ class Product
      * @ORM\Column(type="string", length=1000, nullable=true)
      */
     private $description;
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $size;
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $manufaturer;
 
     /**
      * @ORM\Column(type="integer")
@@ -34,7 +42,7 @@ class Product
     private $price;
 
     /**
-     * @ORM\Column(type="string", length=100, nullable=true)
+     * @ORM\Column(type="string", length=150, nullable=true)
      */
     private $image;
 
@@ -124,5 +132,39 @@ class Product
     {
         $this->count = $count;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getSize()
+    {
+        return $this->size;
+    }
+
+    /**
+     * @param mixed $size
+     */
+    public function setSize($size): void
+    {
+        $this->size = $size;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getManufaturer()
+    {
+        return $this->manufaturer;
+    }
+
+    /**
+     * @param mixed $manufaturer
+     */
+    public function setManufaturer($manufaturer): void
+    {
+        $this->manufaturer = $manufaturer;
+    }
+
+
 
 }

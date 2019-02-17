@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Repository\ProductRepository;
+use http\Params;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ShopController extends AbstractController
@@ -16,32 +18,24 @@ class ShopController extends AbstractController
         $this->productRepository = $productRepository;
     }
 
+
+
+
     /**
      * @Route("/products/{page<\d+>?1}", name="app_products")
      */
-    public function products($page)
+    public function products($page, Request $request)
     {
-
-        $user = $this->getUser();
-        $products = $this->productRepository->findPage($page);
-        $count = intval($this->productRepository->productsCount()/60);
-        if($page>1)$pages[]=["id"=>1,"class"=>"page-item"];
-        if($page>3)$pages[]=["id"=>$page-2,"class"=>"page-item"];
-        if($page>2)$pages[]=["id"=>$page-1,"class"=>"page-item"];
-        $pages[]=["id"=>$page,"class"=>"page-item active"];
-        if($count>2&&$count-1>$page)$pages[]=["id"=>$page+1,"class"=>"page-item"];
-        if($count>3&&$count-2>$page)$pages[]=["id"=>$page+2,"class"=>"page-item"];
-        if($count>4&&$count!=$page)$pages[]=["id"=>$count,"class"=>"page-item"];
+        // TODO connect filter form
 
 
 
+        $products = $this->productRepository->findProducts($page);
+        $count = intval($this->productRepository->productsCount() / 60);
 
         return $this->render(
-            'shop/products.html.twig', ['user_name'  => $user->getUsername(),
-                                        'user_email' => $user->getEmail(),
-                                        'products'   => $products,
-                                        'pages'      => $pages,
-                                        'page'       =>$page,]
+            'shop/products.html.twig',
+            ['products' => $products, 'page' => $page, 'count' => $count]
         );
     }
 

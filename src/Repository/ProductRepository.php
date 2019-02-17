@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -39,15 +40,31 @@ class ProductRepository extends ServiceEntityRepository
             ;
     }
 
-    public function findPage($page){
-        return $this->createQueryBuilder('Product')
+    public function findProducts($page)
+    {
+        return $this->paginatorPrepare($this->createQueryBuilder('Product')
             ->orderBy('Product.name','ASC')
             ->setFirstResult(60 * ($page - 1))
             ->setMaxResults(60)
             ->getQuery()
+            ,$page);
+
+
+    }
+    private function paginatorPrepare(Query $query,$page)
+    {
+        return $query
+            ->setFirstResult(60 * ($page - 1))
+            ->setMaxResults(60)
             ->getResult()
             ;
     }
+    public function findByFilter($brand,$inStock,$minPrice,$maxPrice,$page)
+    {
+       //TODO create query with params;
+
+    }
+
 
     public function productsCount()
     {

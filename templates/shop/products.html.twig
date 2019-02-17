@@ -7,44 +7,91 @@
 
 {% endblock %}
 {% block body %}
+    <div class="main-container">
+
+        <article class="productsBlock" id="0">
+            {% for product in products %}
 
 
-    <nav>
-        <ul class="pagination">
-            <li class="page-item">
-                <a class="page-link" href="{{ path('app_products', {'page': page-1}) }}" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            {% for item in pages %}
-                <li class="{{ item.class }}"><a class="page-link"
-                                                href="{{ path('app_products', {'page': item.id}) }}">{{ item.id }}</a>
-                </li>
-            {% endfor %}
+                <div class="card product" id="{{ product.id }}">
+                    <img src="{{ product.image }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
 
-            <li class="page-item">
-                <a class="page-link" href="{{ path('app_products', {'page': page+1}) }}" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <article class="productsBlock" id="0">
-        {% for product in products %}
+                        <a href="{{ path('app_product_show', {'id': product.id}) }}" class="btn btn-primary">Add to
+                            cart</a>
+                    </div>
 
-            {#<div class="product" id="{{ product.id }}">#}
-            <div class="card product" id="{{ product.id }}">
-                <img src="{{ product.image }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{ product.name }}</h5>
-
-                    <a href="{{ path('app_product_show', {'id': product.id}) }}" class="btn btn-primary">Add to cart</a>
                 </div>
 
-            </div>
+            {% endfor %}
+        </article>
 
-        {% endfor %}
-    </article>
+        <div class="filter-container">
+            <form method="post" action="">
+                <div class="filter-row">
+                    <label >Example select</label>
+                    <select class="form-control filter-expand" id="exampleFormControlSelect1">
+                        <option>Samsung</option>
+                        <option>Xiaomi</option>
+                        <option>Lg</option>
+                        <option>Shivaki</option>
+                        <option>Philips</option>
+                    </select>
+                </div>
+                <div class="filter-row">
+                    <input type="checkbox">
+                    <label class="form-check-label">In stock</label>
+                </div>
+                <div class="filter-row">
+                    <label >Min Price</label><label id="price-min-range-result">200</label>
+                    <input type="range" id="price-min-range" class="form-control-range" name="minPrice" value="200" min="200" max="800">
+
+                </div>
+                <div class="filter-row">
+                    <label >Max Price</label><label id="price-max-range-result">800</label>
+                    <input type="range" id="price-max-range" class="form-control-range" name="maxPrice" value="800" min="200" max="800">
+
+                </div>
+                <div class="filter-row">
+                <button type="submit" class="btn btn-primary submit">Apply</button>
+                </div>
+            </form>
+
+        </div>
+
+        <nav class="pag-container">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="{{ path('app_products', {'page': page-1}) }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="{{ path('app_products', {'page': 1}) }}" aria-label="Previous">
+                        <span aria-hidden="true">first</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="{{ path('app_products', {'page': page}) }}" aria-label="Previous">
+                        <span aria-hidden="true">{{ page }}</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="{{ path('app_products', {'page': count}) }}" aria-label="Previous">
+                        <span aria-hidden="true">last</span>
+                    </a>
+                </li>
+
+
+                <li class="page-item">
+                    <a class="page-link" href="{{ path('app_products', {'page': page+1}) }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 {% endblock %}
 {% block javascripts %}
     <script src="{{ asset('build/js/allProducts.js') }}"></script>
