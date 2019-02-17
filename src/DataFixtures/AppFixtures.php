@@ -34,7 +34,7 @@ class AppFixtures extends Fixture
             $product = new Product();
             $product->setName($this->faker->text(15));
             $product->setDescription($this->faker->text(800));
-            $product->setManufaturer($this->faker->company());
+            $product->setBrand($this->faker->company());
             $product->setSize($this->faker->numberBetween(20,50));
             $product->setDate($this->faker->dateTime);
             $product->setCount($this->faker->numberBetween(1,30));

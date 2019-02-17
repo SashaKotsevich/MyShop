@@ -17,7 +17,8 @@
                     <img src="{{ product.image }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{ product.name }}</h5>
-
+                        <p>{{ product.brand }}</p>
+                        <p>{{ product.price }}</p>
                         <a href="{{ path('app_product_show', {'id': product.id}) }}" class="btn btn-primary">Add to
                             cart</a>
                     </div>
@@ -31,8 +32,9 @@
             <form method="post" action="">
                 <div class="filter-row">
                     <label >Example select</label>
-                    <select class="form-control filter-expand" id="exampleFormControlSelect1">
-                        <option>Samsung</option>
+                    <select class="form-control filter-expand" name="brand" id="exampleFormControlSelect1">
+                        <option >select brand</option>
+                        <option >Samsung</option>
                         <option>Xiaomi</option>
                         <option>Lg</option>
                         <option>Shivaki</option>

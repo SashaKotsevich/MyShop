@@ -3,7 +3,7 @@ import jQuery from "jquery";
 window.$ = window.jQuery = jQuery;
 var elems = $('.product');
 $('.product').on('click', (elem) => {
-    window.location.href = "/user/product/" + elem.delegateTarget.id;
+    window.location.href = "/product/" + elem.delegateTarget.id;
 })
 $('#price-min-range').on('input', function () {
     var max = $('#price-max-range');

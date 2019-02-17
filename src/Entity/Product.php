@@ -34,7 +34,7 @@ class Product
     /**
      * @ORM\Column(type="string")
      */
-    private $manufaturer;
+    private $brand;
 
     /**
      * @ORM\Column(type="integer")
@@ -149,20 +149,14 @@ class Product
         $this->size = $size;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getManufaturer()
+    public function getBrand()
     {
-        return $this->manufaturer;
+        return $this->brand;
     }
 
-    /**
-     * @param mixed $manufaturer
-     */
-    public function setManufaturer($manufaturer): void
+    public function setBrand($brand): void
     {
-        $this->manufaturer = $manufaturer;
+        $this->brand = $brand;
     }
 
 

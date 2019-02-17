@@ -44,8 +44,6 @@ class ProductRepository extends ServiceEntityRepository
     {
         return $this->paginatorPrepare($this->createQueryBuilder('Product')
             ->orderBy('Product.name','ASC')
-            ->setFirstResult(60 * ($page - 1))
-            ->setMaxResults(60)
             ->getQuery()
             ,$page);
 
@@ -59,9 +57,20 @@ class ProductRepository extends ServiceEntityRepository
             ->getResult()
             ;
     }
-    public function findByFilter($brand,$inStock,$minPrice,$maxPrice,$page)
+    public function findByFilter($brand,$minPrice=200,$maxPrice=800,$page)
     {
        //TODO create query with params;
+
+        $query=$this->createQueryBuilder("Product");
+        if(isset($brand)&& $brand!=="select brand"){
+            $query->where("Product.brand=:val AND Product.price>=:min AND Product.price<=:max")
+                ->setParameters(["val"=>$brand,"min"=>$minPrice,"max"=>$maxPrice]);
+        }
+        else{
+        $query->where("Product.price>=:min AND Product.price<=:max")
+            ->setParameters(["min"=>$minPrice,"max"=>$maxPrice]);}
+        return $this->paginatorPrepare($query->getQuery(),$page);
+
 
     }
 
