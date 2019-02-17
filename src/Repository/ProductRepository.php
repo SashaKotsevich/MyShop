@@ -60,9 +60,10 @@ class ProductRepository extends ServiceEntityRepository
     public function findByFilter($brand,$minPrice=200,$maxPrice=800,$page)
     {
        $query=$this->createQueryBuilder("Product");
-        if(isset($brand)&& $brand!=="select brand"){
+        if(isset($brand)&& $brand!=="select"){
             $query->where("Product.brand=:val AND Product.price>=:min AND Product.price<=:max")
                 ->setParameters(["val"=>$brand,"min"=>$minPrice,"max"=>$maxPrice]);
+            echo "ok";
         }
         else{
         $query->where("Product.price>=:min AND Product.price<=:max")
@@ -72,38 +73,4 @@ class ProductRepository extends ServiceEntityRepository
 
     }
 
-
-    public function productsCount()
-    {
-        return count($this->findAll());
-    }
-
-    // /**
-    //  * @return Product[] Returns an array of Product objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Product
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

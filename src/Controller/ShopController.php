@@ -24,19 +24,27 @@ class ShopController extends AbstractController
     public function products($page, Request $request)
     {
 
+        $filterParams['brand'] = $request->get("brand");
+        $filterParams['minPrice'] = $request->get("minPrice");
+        $filterParams['maxPrice'] = $request->get('maxPrice');
 
-        $brand = $request->get("brand");
-        $minPrice = $request->get("minPrice");
-        $maxPrice = $request->get('maxPrice');
+        if (!isset($filterParams['brand'])) {
+            $filterParams['brand'] = 'select';
+            $filterParams['minPrice'] = 200;
+            $filterParams['maxPrice'] = 800;
+        }
+
         $products = $this->productRepository->findByFilter(
-            $brand, $minPrice, $maxPrice, $page
+            $filterParams['brand'], $filterParams['minPrice'],
+            $filterParams['maxPrice'], $page
         );
 
-        $count = intval($this->productRepository->productsCount() / 60);
+       $countPages = intval(count($products)/60)+1;
 
         return $this->render(
             'shop/products.html.twig',
-            ['products' => $products, 'page' => $page, 'count' => $count]
+            ['products'     => $products, 'page' => $page, 'count' => $countPages,
+             'filterParams' => $filterParams]
         );
     }
 

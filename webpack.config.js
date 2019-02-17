@@ -1,7 +1,7 @@
 var Encore = require('@symfony/webpack-encore');
 
 Encore
-    // directory where compiled assets will be stored
+// directory where compiled assets will be stored
     .setOutputPath('public/build/')
     // public path used by the web server to access the output path
     .setPublicPath('/build')
@@ -20,11 +20,14 @@ Encore
 
     .addEntry('js/app', [
         './assets/js/app.js',
-        './node_modules/bootstrap/dist/js/bootstrap.min.js'
+        './node_modules/bootstrap/dist/js/bootstrap.min.js',
+
+
     ])
     .addStyleEntry('css/app', [
         './assets/css/app.css',
-        './node_modules/bootstrap/dist/css/bootstrap.min.css'
+        './node_modules/bootstrap/dist/css/bootstrap.min.css',
+
     ])
     .addEntry('js/allProducts', [
         './assets/js/allProducts.js',
@@ -35,6 +38,7 @@ Encore
     .addStyleEntry('css/profile', [
         './assets/css/profile.css',
     ])
+
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 
@@ -55,18 +59,18 @@ Encore
     // enables hashed filenames (e.g. app.abc123.css)
     .enableVersioning(Encore.isProduction())
 
-    // enables Sass/SCSS support
-    //.enableSassLoader()
+// enables Sass/SCSS support
+//.enableSassLoader()
 
-    // uncomment if you use TypeScript
-    //.enableTypeScriptLoader()
+// uncomment if you use TypeScript
+//.enableTypeScriptLoader()
 
-    // uncomment if you're having problems with a jQuery plugin
-    //.autoProvidejQuery()
+// uncomment if you're having problems with a jQuery plugin
+//.autoProvidejQuery()
 
-    // uncomment if you use API Platform Admin (composer req api-admin)
-    //.enableReactPreset()
-    //.addEntry('admin', './assets/js/admin.js')
+// uncomment if you use API Platform Admin (composer req api-admin)
+//.enableReactPreset()
+//.addEntry('admin', './assets/js/admin.js')
 ;
 
 module.exports = Encore.getWebpackConfig();

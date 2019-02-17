@@ -29,30 +29,29 @@
         </article>
 
         <div class="filter-container">
-            <form method="post" action="">
+            <form method="post" action="/products/1">
                 <div class="filter-row">
                     <label >Example select</label>
-                    <select class="form-control filter-expand" name="brand" id="exampleFormControlSelect1">
-                        <option >select brand</option>
-                        <option >Samsung</option>
+                    <select class="form-control filter-expand" name="brand" >
+                        <option>select</option>
+                        <option>Samsung</option>
                         <option>Xiaomi</option>
                         <option>Lg</option>
                         <option>Shivaki</option>
                         <option>Philips</option>
                     </select>
+
+
                 </div>
+
                 <div class="filter-row">
-                    <input type="checkbox">
-                    <label class="form-check-label">In stock</label>
-                </div>
-                <div class="filter-row">
-                    <label >Min Price</label><label id="price-min-range-result">200</label>
-                    <input type="range" id="price-min-range" class="form-control-range" name="minPrice" value="200" min="200" max="800">
+                    <label >Min Price</label><label id="price-min-range-result">{{ filterParams["minPrice"] }}</label>
+                    <input type="range" id="price-min-range" class="form-control-range" name="minPrice" value={{ filterParams["minPrice"] }} min="200" max="800">
 
                 </div>
                 <div class="filter-row">
-                    <label >Max Price</label><label id="price-max-range-result">800</label>
-                    <input type="range" id="price-max-range" class="form-control-range" name="maxPrice" value="800" min="200" max="800">
+                    <label >Max Price</label><label id="price-max-range-result">{{ filterParams["maxPrice"] }}</label>
+                    <input type="range" id="price-max-range" class="form-control-range" name="maxPrice" value={{ filterParams["maxPrice"] }} min="200" max="800">
 
                 </div>
                 <div class="filter-row">
