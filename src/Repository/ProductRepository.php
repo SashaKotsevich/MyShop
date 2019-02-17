@@ -59,9 +59,7 @@ class ProductRepository extends ServiceEntityRepository
     }
     public function findByFilter($brand,$minPrice=200,$maxPrice=800,$page)
     {
-       //TODO create query with params;
-
-        $query=$this->createQueryBuilder("Product");
+       $query=$this->createQueryBuilder("Product");
         if(isset($brand)&& $brand!=="select brand"){
             $query->where("Product.brand=:val AND Product.price>=:min AND Product.price<=:max")
                 ->setParameters(["val"=>$brand,"min"=>$minPrice,"max"=>$maxPrice]);
