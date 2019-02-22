@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/css/product.css') }}">
+{% endblock %}
 {% block body %}
+    <div class="product-panel">
     <p>{{ product.name }}</p>
     <p>{{ product.description }}</p>
+    </div>
 {% endblock %}

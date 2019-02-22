@@ -38,6 +38,15 @@ Encore
     .addStyleEntry('css/profile', [
         './assets/css/profile.css',
     ])
+    .addStyleEntry('css/login', [
+        './assets/css/login.css',
+    ])
+    .addStyleEntry('css/register', [
+        './assets/css/register.css',
+    ])
+    .addStyleEntry('css/product', [
+        './assets/css/product.css',
+    ])
 
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')

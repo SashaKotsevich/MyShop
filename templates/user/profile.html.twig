@@ -5,13 +5,16 @@
     <link rel="stylesheet" href="{{ asset('build/css/profile.css') }}">
 {% endblock %}
 {% block body %}
-{#<div class="profile-main-container">#}
-    {#<img src="/images/profile-alt.png" alt="">#}
-    {#<div class="profile-data">#}
-        {#<h5>{{ user.username }}</h5>#}
+<div class="profile-main-container">
+    <img src="/images/profile-alt.png" class="user-icon" alt="">
+    <div class="profile-data">
+        <label>Username:</label>
+        <h2 class="username">{{ user.username }}</h2>
+        <label>Email:</label>
+        <h3>{{ user.email }}</h3>
 
-    {#</div>#}
-{#</div>#}
+    </div>
+</div>
 
 
 {% endblock %}
